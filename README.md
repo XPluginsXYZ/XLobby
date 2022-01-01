@@ -1,19 +1,19 @@
-Permissions:
-
-xplugins.command.setlocation (/setlocation) - Zum setzen einer Location
-xplugins.command.fly (/fly) - Zum Fliegen in der Lobby
-xplugins.command.build (/build) - Zum Bauen in der Lobby
-
-
-
-
-Configs:
-
-items.yml: Konfiguriere das Inventar des Navigators und das Item des Navigators.
-
-
-
-Beispiel:
+Permissions:</br>
+</br>
+xplugins.command.setlocation (/setlocation) - Zum setzen einer Location</br>
+xplugins.command.fly (/fly) - Zum Fliegen in der Lobby</br>
+xplugins.command.build (/build) - Zum Bauen in der Lobby</br>
+</br>
+</br>
+</br>
+</br>
+Configs:</br>
+</br>
+items.yml: Konfiguriere das Inventar des Navigators und das Item des Navigators.</br>
+</br>
+</br>
+</br>
+Beispiel:</br>
 </br>
 ---------------------------------------------------------</br>
 </br>
