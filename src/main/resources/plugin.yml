@@ -1,0 +1,12 @@
+name: XLobby
+version: '${project.version}'
+main: xyz.plocki.xlobby.XLobby
+api-version: 1.13
+prefix: LOBBYSYSTEM
+load: STARTUP
+authors: [ plocki, zappler2k ]
+website: https://xplugins.xyz
+commands:
+  build:
+  fly:
+  setlocation:
