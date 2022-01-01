@@ -53,4 +53,4 @@ inventory:</br>
 Locations.yml: Speichert die Locations
 
 
-Config.yml: Editiere den Prefix
+Config.yml: Editiere den Prefix und die NoPermissions Nachricht
