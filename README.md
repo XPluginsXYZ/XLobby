@@ -14,35 +14,43 @@ items.yml: Konfiguriere das Inventar des Navigators und das Item des Navigators.
 
 
 Beispiel:
+</br>
+---------------------------------------------------------</br>
+</br>
+itemLocation: 4 #NAVIGATOR SLOT IM INVENTAR</br>
+itemAction: #ZUM SETZEN EINER TELEPORT AKTION</br>
+  '10': #SLOT</br>
+    location: location1 #LOCATION NAME</br>
+  '13':</br>
+    location: location2</br>
+  '16':</br>
+    location: location3</br>
+handItem: #NAMIGATOR ITEM</br>
+  ==: org.bukkit.inventory.ItemStack</br>
+  type: COMPASS #ITEM</br>
+  meta:</br>
+    ==: ItemMeta</br>
+    meta-type: UNSPECIFIC</br>
+    display-name: §a§lMenü   #ITEM NAME</br>
+inventory:</br>
+  size: 27</br>
+  title: §6§lXLobby §8» §a§lNavigator  #INVENTAR TITEL</br>
+  slot:</br>
+    '0': #SLOT</br>
+      ==: org.bukkit.inventory.ItemStack</br>
+      type: STAINED_GLASS_PANE #INVENTAR ITEM</br>
+      damage: 11 #SUBID (AUCH FÜR CUSTOM MODELS DIE MODEL-ID)</br>
+      meta:</br>
+        ==: ItemMeta</br>
+        meta-type: UNSPECIFIC</br>
+        display-name: §b #ITEM NAME</br>
+</br>
+---------------------------------------------------------</br>
 
----------------------------------------------------------
 
-itemLocation: 4 #NAVIGATOR SLOT IM INVENTAR
-itemAction: #ZUM SETZEN EINER TELEPORT AKTION
-  '10': #SLOT
-    location: location1 #LOCATION NAME
-  '13':
-    location: location2
-  '16':
-    location: location3
-handItem: #NAMIGATOR ITEM
-  ==: org.bukkit.inventory.ItemStack
-  type: COMPASS #ITEM
-  meta:
-    ==: ItemMeta
-    meta-type: UNSPECIFIC
-    display-name: §a§lMenü   #ITEM NAME
-inventory:
-  size: 27
-  title: §6§lXLobby §8» §a§lNavigator  #INVENTAR TITEL
-  slot:
-    '0': #SLOT
-      ==: org.bukkit.inventory.ItemStack
-      type: STAINED_GLASS_PANE #INVENTAR ITEM
-      damage: 11 #SUBID (AUCH FÜR CUSTOM MODELS DIE MODEL-ID)
-      meta:
-        ==: ItemMeta
-        meta-type: UNSPECIFIC
-        display-name: §b #ITEM NAME
 
----------------------------------------------------------
+
+Locations.yml: Speichert die Locations
+
+
+Config.yml: Editiere den Prefix
