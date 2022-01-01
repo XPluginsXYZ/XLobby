@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import xyz.plocki.xlobby.XLobby;
-import xyz.plocki.xlobby.utils.LocationManager;
+import xyz.plocki.xlobby.utils.inventory.LocationManager;
 
 public class SetLocationCommand implements CommandExecutor {
 

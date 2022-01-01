@@ -1,6 +1,7 @@
 package xyz.plocki.xlobby;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Particle;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.plocki.xlobby.commands.BuildCommand;
 import xyz.plocki.xlobby.commands.FlyCommand;
@@ -8,8 +9,9 @@ import xyz.plocki.xlobby.commands.SetLocationCommand;
 import xyz.plocki.xlobby.listeners.BuildListener;
 import xyz.plocki.xlobby.listeners.PlayerListener;
 import xyz.plocki.xlobby.utils.ConfigManager;
-import xyz.plocki.xlobby.utils.InventoryManager;
-import xyz.plocki.xlobby.utils.LocationManager;
+import xyz.plocki.xlobby.utils.inventory.CosmeticInventory;
+import xyz.plocki.xlobby.utils.inventory.InventoryManager;
+import xyz.plocki.xlobby.utils.inventory.LocationManager;
 
 public final class XLobby extends JavaPlugin {
 
@@ -37,6 +39,14 @@ public final class XLobby extends JavaPlugin {
         //world time setter
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
             Bukkit.getWorlds().forEach(world -> world.setTime(new LocationManager().getWorldTime()));
+            Bukkit.getOnlinePlayers().forEach(player -> {
+                if(CosmeticInventory.lavaBoots.containsKey(player)) {
+                    player.getWorld().spawnParticle(Particle.LAVA, player.getLocation().clone().subtract(0,0.3,0), 100);
+                }
+                if(CosmeticInventory.waterBoots.containsKey(player)) {
+                    player.getWorld().spawnParticle(Particle.DRIP_WATER, player.getLocation().clone().subtract(0,0.3,0), 100);
+                }
+            });
         }, 0, 20);
 
     }

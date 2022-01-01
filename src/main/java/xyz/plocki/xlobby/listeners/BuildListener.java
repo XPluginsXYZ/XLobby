@@ -8,7 +8,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import xyz.plocki.xlobby.commands.BuildCommand;
-import xyz.plocki.xlobby.utils.InventoryManager;
+import xyz.plocki.xlobby.utils.inventory.InventoryManager;
 
 public class BuildListener implements Listener {
 

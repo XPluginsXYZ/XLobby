@@ -1,4 +1,4 @@
-package xyz.plocki.xlobby.utils;
+package xyz.plocki.xlobby.utils.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -10,9 +10,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import xyz.plocki.xlobby.XLobby;
+import xyz.plocki.xlobby.utils.VersionUtil;
 import xyz.plocki.xlobby.utils.files.FileBuilder;
-import xyz.plocki.xlobby.utils.inventory.ItemBuilder;
-import xyz.plocki.xlobby.utils.inventory.PlayerHead;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,12 +30,24 @@ public class InventoryManager {
             yamlConfiguration.set("itemAction.0.location", "exampleLocation");
             yamlConfiguration.set("handItem", new ItemBuilder("§a§lMenü", Material.COMPASS, "default\nlore").buildItem());
         }
+        if(!yamlConfiguration.isSet("cosmeticItem")) {
+            ItemStack item;
+            if(VersionUtil.is1_13()) {
+                item = new ItemBuilder("§7", Material.BLACK_STAINED_GLASS_PANE, "default\nlore").buildItem();
+            } else {
+                item = new ItemBuilder("§7", new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1, (short) 11), "default\nlore").buildItem();
+            }
+            yamlConfiguration.set("cosmeticInventoryPane", item);
+            yamlConfiguration.set("cosmeticInventoryName", XLobby.prefix + "Gadgets");
+            yamlConfiguration.set("cosmeticItem", new ItemBuilder("§6§lGadgets", Material.CHEST, "default\nlore").buildItem());
+            yamlConfiguration.set("cosmeticItemLocation", 6);
+        }
         if(!yamlConfiguration.isSet("inventory")) {
             Inventory inventory = Bukkit.createInventory(null, 3*9, XLobby.prefix + "Default Inventory");
             ItemStack itemStack;
             if(VersionUtil.is1_13()) {
                 itemStack = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
-            } else {
+            } else  {
                 itemStack = new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1, (short) 11);
             }
             ItemMeta itemMeta = itemStack.getItemMeta();
@@ -84,6 +95,22 @@ public class InventoryManager {
 
     public ItemStack getInventoryItem() {
         return yamlConfiguration.getItemStack("handItem");
+    }
+
+    public ItemStack getCosmeticInventoryPane() {
+        return yamlConfiguration.getItemStack("cosmeticInventoryPane");
+    }
+
+    public ItemStack getCosmeticItem() {
+        return yamlConfiguration.getItemStack("cosmeticItem");
+    }
+
+    public int getCosmeticItemLocation() {
+        return yamlConfiguration.getInt("cosmeticItemLocation");
+    }
+
+    public String getCosmeticInventoryTitle() {
+        return yamlConfiguration.getString("cosmeticInventoryName");
     }
 
 }
