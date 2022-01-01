@@ -12,14 +12,17 @@ public class ConfigManager {
         yamlConfiguration = fileBuilder.getYaml();
         if(yamlConfiguration.getString("prefix") == null) {
             yamlConfiguration.set("prefix", "&c&lX&6&lLobby &8» &7");
-
-
+            yamlConfiguration.set("noPermissions", "§cDu hast dazu keine Rechte.");
             fileBuilder.save();
         }
     }
 
     public String getPrefix() {
         return yamlConfiguration.getString("prefix").replaceAll("&", "§");
+    }
+
+    public String getNoPermissions() {
+        return yamlConfiguration.getString("noPermissions");
     }
 
 }

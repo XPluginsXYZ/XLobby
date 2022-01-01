@@ -23,6 +23,7 @@ public final class XLobby extends JavaPlugin {
         ConfigManager.init();
         LocationManager.init();
         prefix = new ConfigManager().getPrefix();
+        noPermissions = new ConfigManager().getNoPermissions();
 
         //register commands
         this.getCommand("build").setExecutor(new BuildCommand());
