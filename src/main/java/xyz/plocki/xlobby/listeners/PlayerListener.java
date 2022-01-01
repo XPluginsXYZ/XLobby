@@ -1,5 +1,6 @@
 package xyz.plocki.xlobby.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -86,12 +87,32 @@ public class PlayerListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         if(event.getCurrentItem() != null) {
             event.setCancelled(!BuildCommand.players.contains((Player) event.getWhoClicked()));
+            if(event.getCurrentItem().getItemMeta().getDisplayName().contains("§a§lHider §8| §aStatus:")) {
+                if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§a§lHider §8| §aStatus: §cKeine Spieler")) {
+                    Bukkit.getOnlinePlayers().forEach(player -> {
+                        ((Player) event.getWhoClicked()).hidePlayer(player);
+                    });
+                } else if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§a§lHider §8| §aStatus: §5VIP / Team")) {
+                    Bukkit.getOnlinePlayers().forEach(player -> {
+                        ((Player) event.getWhoClicked()).showPlayer(player);
+                        if(!event.getWhoClicked().hasPermission("xlobby.hide.vip")) {
+                            ((Player) event.getWhoClicked()).hidePlayer(player);
+                        }
+                    });
+                } else if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§a§lHider §8| §aStatus: §aAlle")) {
+                    Bukkit.getOnlinePlayers().forEach(player -> {
+                        ((Player) event.getWhoClicked()).showPlayer(player);
+                    });
+                }
+                return;
+            }
             if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(new InventoryManager().getInventoryItem().getItemMeta().getDisplayName())) {
                 event.getWhoClicked().openInventory(new InventoryManager().getInventory());
                 return;
             }
             if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(new InventoryManager().getCosmeticItem().getItemMeta().getDisplayName())) {
                 event.getWhoClicked().openInventory(new CosmeticInventory().getCosmeticInventory());
+                return;
             }
             if(event.getInventory().getTitle().equalsIgnoreCase(new InventoryManager().getInventory().getTitle())) {
                 if(new InventoryManager().getItemLocation(event.getSlot()) != null) {
